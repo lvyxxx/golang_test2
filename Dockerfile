@@ -1,13 +1,9 @@
-FROM golang
+FROM alpine:latest
+RUN mkdir -p /app
+WORKDIR /app
 
-MAINTAINER Razil "zc6496359"
+ADD main /app/main
 
-WORKDIR $GOPATH/src/godocker
+EXPOSE 9999
 
-ADD . $GOPATH/src/godocker
-
-RUN go build main.go
-
-EXPOSE 8080
-
-ENTRYPOINT ["./main"]
+CMD ["./main"]
